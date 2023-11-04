@@ -1,0 +1,63 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+type LinksTypeProps {
+  links TechsTypeProps[]
+}
+
+type TechsTypeProps {
+  id       String
+  svg_name String
+  link     String
+  svg_link String
+}
+
+model Project {
+  id            String         @id @default(auto()) @map("_id") @db.ObjectId
+  project_name  String
+  deploy_url    String
+  banner_url    String
+  thumbnail_url String
+  description   String
+  order         Int
+  techs         LinksTypeProps
+
+  @@map("projects")
+}
+
+model Skills {
+  id          String @id @default(auto()) @map("_id") @db.ObjectId
+  svg_link    String
+  skill_name  String
+  description String
+
+  @@map("skills")
+}
+
+model Softskills {
+  id             String @id @default(auto()) @map("_id") @db.ObjectId
+  softskill_name String
+
+  @@map("softskills")
+}
+
+model Profile {
+  id            String @id @default(auto()) @map("_id") @db.ObjectId
+  description_1 String
+  description_2 String
+
+  @@map("profile")
+}
+
+model SecretKey {
+  id        String @id @default(auto()) @map("_id") @db.ObjectId
+  secretKey String
+
+  @@map("secret-key")
+}
