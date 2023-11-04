@@ -1,6 +1,6 @@
 #
 
-## 🛠️ Techno,ogy
+## 🛠️ Technology
 
 📁 **Back-end**
 - [Node.js](https://nodejs.org)
